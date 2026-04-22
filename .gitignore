@@ -1,27 +1,22 @@
-# LaTeX Hilfsdateien
+# LaTeX generierte Dateien
 *.aux
 *.bbl
-*.bcf
 *.blg
-*.fdb_latexmk
-*.fls
-*.glo
-*.gls
-*.glg
-*.acn
-*.acr
-*.alg
 *.idx
-*.ilg
 *.ind
-*.ist
 *.lof
 *.log
 *.lot
 *.out
-*.run.xml
-*.synctex.gz
 *.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
 *.thm
-*.pdf
-*.DS_Store
+*.ilg
+
+# macOS
+.DS_Store
+
+# PDF (optional - entfernen wenn PDF versioniert werden soll)
+# *.pdf
