@@ -7,7 +7,10 @@
       "Bash(git remote *)",
       "Bash(git push *)",
       "Read(//c/Users/mafia/Documents/Bachelorarbeit Jonathan/Bachelorarbeit/**)",
-      "Read(//c/Users/mafia/Documents/Bachelorarbeit Jonathan/**)"
+      "Read(//c/Users/mafia/Documents/Bachelorarbeit Jonathan/**)",
+      "Bash(git pull *)",
+      "Bash(git rm *)",
+      "Bash(rmdir \"bachelor_arbeit/bilder\")"
     ]
   }
 }
