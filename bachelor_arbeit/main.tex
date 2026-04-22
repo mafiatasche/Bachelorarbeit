@@ -1,155 +1,67 @@
-%============================================================
-% Bachelor-Arbeit – Hauptdatei
-%============================================================
-\documentclass[
-    12pt,
-    a4paper,
-    twoside,
-    openright,
-    headsepline,
-    bibliography=totoc,
-    listof=totoc
-]{scrreprt}
+\documentclass[a4paper,english,oneside,openany,12pt]{book}
 
-%------------------------------------------------------------
-% Pakete
-%------------------------------------------------------------
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage{lmodern}
-
-% Seitenränder
-\usepackage[
-    left=3cm,
-    right=2.5cm,
-    top=2.5cm,
-    bottom=2.5cm
-]{geometry}
-
-% Grafiken & Tabellen
-\usepackage{graphicx}
-\graphicspath{{bilder/}}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{float}
-
-% Kopf- und Fußzeilen
-\usepackage{scrlayer-scrpage}
-\pagestyle{scrheadings}
-\clearpairofpagestyles
-\ohead{\headmark}
-\ofoot{\pagemark}
-\automark[section]{chapter}
-
-% Hyperlinks & PDF-Metadaten
-\usepackage[
-    pdftitle={Bachelor-Arbeit},
-    pdfauthor={Markus Allmang},
-    pdfsubject={Bachelor-Arbeit},
-    colorlinks=false,
-    hidelinks
-]{hyperref}
-
-% Symbol- & Abkürzungsverzeichnis
-\usepackage[
-    acronym,
-    nonumberlist,
-    toc,
-    section=chapter
-]{glossaries}
-
-% Weitere nützliche Pakete
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{siunitx}
-\sisetup{locale=DE}
-\usepackage{microtype}
-\usepackage{setspace}
-\onehalfspacing
-
-% Quellenverzeichnis
-\usepackage[
-    backend=biber,
-    style=alphabetic,
-    sorting=nyt
-]{biblatex}
+\input{verzeichnisse/pakete}
 \addbibresource{literatur.bib}
 
-% Verzeichnisse laden
-\makeglossaries
-\input{verzeichnisse/abkuerzungen}
-\input{verzeichnisse/symbole}
-
-%============================================================
 \begin{document}
-%============================================================
 
 %------------------------------------------------------------
-% Deckblatt (römische Seitenzahlen, aber nicht angezeigt)
+% Titelseite + Eidesstattliche Erklärung
 %------------------------------------------------------------
-\pagenumbering{Roman}
-\include{verzeichnisse/deckblatt}
+\pagestyle{empty}
+\input{verzeichnisse/deckblatt}
 
 %------------------------------------------------------------
 % Inhaltsverzeichnis
 %------------------------------------------------------------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{plain}
 \tableofcontents
-\cleardoublepage
-
-%------------------------------------------------------------
-% Abbildungsverzeichnis
-%------------------------------------------------------------
-\listoffigures
 \cleardoublepage
 
 %------------------------------------------------------------
 % Tabellenverzeichnis
 %------------------------------------------------------------
 \listoftables
+\protect\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \cleardoublepage
 
 %------------------------------------------------------------
-% Abkürzungsverzeichnis
+% Abbildungsverzeichnis
 %------------------------------------------------------------
-\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis, toctitle=Abkürzungsverzeichnis]
+\enlargethispage{-4cm}
+\listoffigures
+\protect\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \cleardoublepage
 
 %------------------------------------------------------------
-% Symbolverzeichnis
+% Nomenklatur (Formelzeichen & Abkürzungen)
 %------------------------------------------------------------
-\printglossary[type=symbols, title=Symbolverzeichnis, toctitle=Symbolverzeichnis]
-\cleardoublepage
+\addcontentsline{toc}{chapter}{Nomenklatur}
+\input{verzeichnisse/nomenklatur}
 
 %------------------------------------------------------------
-% Hauptteil (arabische Seitenzahlen)
+% Hauptteil (arabische Seitenzahlen ab Seite 1)
 %------------------------------------------------------------
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\include{kapitel/01_einleitung}
-\include{kapitel/02_grundlagen}
-\include{kapitel/03_hauptteil}
-\include{kapitel/04_ergebnisse}
-\include{kapitel/05_fazit}
+\input{kapitel/01_einleitung}
+\input{kapitel/02_grundlagen}
+\input{kapitel/03_hauptteil}
+\input{kapitel/04_ergebnisse}
+\input{kapitel/05_fazit}
 
 %------------------------------------------------------------
 % Literaturverzeichnis
 %------------------------------------------------------------
-\printbibliography[heading=bibintoc, title=Literaturverzeichnis]
+\nocite{*}
+\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
 
 %------------------------------------------------------------
 % Anhang
 %------------------------------------------------------------
-\appendix
-\include{kapitel/anhang}
+\input{kapitel/anhang}
 
-%------------------------------------------------------------
-% Eidesstattliche Erklärung
-%------------------------------------------------------------
-\include{verzeichnisse/erklaerung}
-
-%============================================================
 \end{document}
-%============================================================
